@@ -1,40 +1,38 @@
-# VEya Web Backend
+# VEya AI Backend
 
-FastAPI backend for VEya eye disease detection model.
+Eye disease detection API powered by MobileNetV2.
 
-## Setup
+## 🚀 Quick Deploy
 
-```bash
-cd backend
-pip install -r requirements.txt
-```
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/veya-backend?referralCode=vfHgR3)
 
-## Run
+**Or manually:**
 
-```bash
-python app/main.py
-```
+1. Fork this repo
+2. Go to [Railway](https://railway.app/new)
+3. Deploy from GitHub → Select `veya-backend`
+4. Wait 3-5 minutes
+5. Generate domain in Settings
 
-Server runs on http://localhost:8000
+## 🧠 Model Info
 
-## Model
-
-- **Location:** `C:\Users\Ulagat\veya-dataset\trained_model\veya_model_final.keras`
+- **Architecture:** MobileNetV2
 - **Classes:** Cataract, Conjunctivitis, Normal, Pterygium
 - **Accuracy:** 81.22%
-- **Input:** 224×224 RGB images
+- **Model Size:** 26MB
 
-## API Endpoints
+## 📡 API Endpoints
 
 ### `GET /health`
-Health check and model status
+Health check
+```bash
+curl https://your-backend.railway.app/health
+```
 
 ### `POST /api/analyze`
 Analyze eye image
-
-**Request:**
 ```bash
-curl -X POST http://localhost:8000/api/analyze \
+curl -X POST https://your-backend.railway.app/api/analyze \
   -F "file=@eye.jpg"
 ```
 
@@ -48,21 +46,39 @@ curl -X POST http://localhost:8000/api/analyze \
     "Conjunctivitis": 0.01,
     "Normal": 0.95,
     "Pterygium": 0.02
-  },
-  "model_version": "1.0.0"
+  }
 }
 ```
 
-## Environment Variables
+## 🛠️ Tech Stack
 
-- `MODEL_API_URL` - Set in Next.js `.env.local` (default: http://localhost:8000)
+- FastAPI
+- TensorFlow 2.15
+- Python 3.11
+- Uvicorn
 
-## Development
+## 📦 Local Development
 
-1. Start backend: `python app/main.py`
-2. Start frontend: `cd .. && npm run dev`
-3. Open http://localhost:3000
+```bash
+pip install -r requirements.txt
+python app/main.py
+```
 
-## Deployment
+Server runs on http://localhost:8000
 
-For production, deploy backend separately (Railway, Render, etc.) and set `MODEL_API_URL` in Vercel environment variables.
+## 🔗 Frontend
+
+Connect to [VEya Web](https://veya-web-zeta.vercel.app):
+
+Add environment variable in Vercel:
+```
+MODEL_API_URL=https://your-backend.railway.app
+```
+
+## 📄 License
+
+MIT
+
+---
+
+Built for NASA SEES x Stardance 2026
