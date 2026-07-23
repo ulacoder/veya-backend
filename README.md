@@ -78,7 +78,3 @@ MODEL_API_URL=https://your-backend.railway.app
 ## 📄 License
 
 MIT
-
----
-
-Built for NASA SEES x Stardance 2026
